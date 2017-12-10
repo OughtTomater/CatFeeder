@@ -1,0 +1,26 @@
+package net.teamhuffowicz.catfeeder.controller;
+
+import com.pi4j.io.gpio.*;
+import com.pi4j.wiringpi.Gpio;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+public class FeederController {
+
+    private static GpioPinDigitalOutput pin;
+
+    @RequestMapping("/")
+    public String greeting(){
+        return "Hello World";
+    }
+
+    @RequestMapping("/light")
+    public String light(){
+        if (pin ==null) {
+            GpioController gpioController = GpioFactory.getInstance();
+            pin = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.LOW);
+        }
+
+        pin.toggle();
+        return "Toggled LED";
+    }
+}
