@@ -16,12 +16,12 @@ public class FeederController {
     }
 
     @RequestMapping("/light")
-    public String light(){
+    public String light() throws InterruptedException {
         if (pin ==null) {
             GpioController gpioController = GpioFactory.getInstance();
             pin = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.LOW);
         }
-
+        Thread.sleep(5000);
         pin.toggle();
         return "Toggled LED";
     }
