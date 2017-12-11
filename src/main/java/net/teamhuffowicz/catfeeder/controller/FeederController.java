@@ -3,7 +3,9 @@ package net.teamhuffowicz.catfeeder.controller;
 import com.pi4j.io.gpio.*;
 import com.pi4j.wiringpi.Gpio;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public class FeederController {
 
     private static GpioPinDigitalOutput pin;
@@ -17,7 +19,7 @@ public class FeederController {
     public String light(){
         if (pin ==null) {
             GpioController gpioController = GpioFactory.getInstance();
-            pin = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.LOW);
+            pin = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_17, "MyLED", PinState.LOW);
         }
 
         pin.toggle();
