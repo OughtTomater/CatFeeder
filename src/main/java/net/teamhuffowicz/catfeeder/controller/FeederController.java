@@ -1,13 +1,16 @@
 package net.teamhuffowicz.catfeeder.controller;
 
 import com.pi4j.io.gpio.*;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class FeederController {
 
     private static GpioPinDigitalOutput pin;
+    private static GpioPinPwmOutput pwm;
 
     @RequestMapping("/")
     public String greeting() {
@@ -42,4 +45,17 @@ public class FeederController {
         }
         return pin;
     }
+
+    public GpioPinPwmOutput getPwm(){
+        getPin(1).isMode(PinMode.PWM_OUTPUT);
+
+        return null;
+       }
+
+    /*@RequestMapping("/greeting")
+    public String greeting(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "greeting";
+    }*/
+
 }
