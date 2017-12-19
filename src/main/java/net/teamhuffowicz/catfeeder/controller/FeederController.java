@@ -1,9 +1,7 @@
 package net.teamhuffowicz.catfeeder.controller;
 
 import com.pi4j.io.gpio.*;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -12,10 +10,10 @@ public class FeederController {
     private static GpioPinDigitalOutput pin;
     private static GpioPinPwmOutput pwm;
 
-    @RequestMapping("/")
+    /*@RequestMapping("/")
     public String greeting() {
         return "Hello World";
-    }
+    }*/
 
     @RequestMapping("/toggle")
     public String light() throws InterruptedException {
@@ -24,18 +22,22 @@ public class FeederController {
     }
 
     @RequestMapping("/on")
-    public void turnOn() {
+    public String turnOn() {
+        System.out.println("this works");
         getPin(1).high();
+    return "LED ON!";
     }
 
     @RequestMapping("/off")
-    public void turnOff() {
+    public String turnOff() {
         getPin(1).low();
+        return "LED Off!";
     }
 
     @RequestMapping("/blink")
-    public void blinkLed() {
+    public String blinkLed() {
         getPin(1).blink(200, 5000);
+        return "Blink...blink...blink";
     }
 
     public GpioPinDigitalOutput getPin(int pinNumber) {
