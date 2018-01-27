@@ -1,6 +1,7 @@
 package net.teamhuffowicz.catfeeder.controller;
 
 import com.pi4j.io.gpio.*;
+import net.teamhuffowicz.catfeeder.pinhandlers.digital.Pwm;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FeederController {
 
     private static GpioPinDigitalOutput pin;
-    private static GpioPinPwmOutput pwm;
+    Pwm servo = new Pwm();
 
     /*@RequestMapping("/")
     public String greeting() {
@@ -40,6 +41,12 @@ public class FeederController {
         return "Blink...blink...blink";
     }
 
+    @RequestMapping("/servo")
+    public String servo(){
+        servo.turnServo();
+        return "turning servo";
+    }
+
     public GpioPinDigitalOutput getPin(int pinNumber) {
         if (pin == null) {
             GpioController gpioController = GpioFactory.getInstance();
@@ -48,11 +55,6 @@ public class FeederController {
         return pin;
     }
 
-    public GpioPinPwmOutput getPwm(){
-        getPin(1).isMode(PinMode.PWM_OUTPUT);
-
-        return null;
-       }
 
     /*@RequestMapping("/greeting")
     public String greeting(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
