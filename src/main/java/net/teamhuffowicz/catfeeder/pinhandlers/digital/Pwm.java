@@ -17,12 +17,7 @@ public class Pwm {
        Gpio.pwmSetMode(Gpio.PWM_MODE_MS);
        Gpio.pwmSetClock(192);
        Gpio.pwmSetRange(2000);
-       pwm.setPwm(500);
+       Gpio.pwmWrite(18, 75);
    }
-
-   /*public GpioPinPwmOutput createServo(String pin){
-        GpioPinPwmOutput servo = gpioFactory.provisionPwmOutputPin(RaspiPin.GPIO_26);
-        return servo;
-    }*/
 
 }
