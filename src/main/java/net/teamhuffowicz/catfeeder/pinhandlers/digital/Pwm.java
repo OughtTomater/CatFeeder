@@ -15,8 +15,8 @@ public class Pwm {
    public void turnServo(){
        Gpio.pinMode(18,Gpio.PWM_OUTPUT);
        Gpio.pwmSetMode(Gpio.PWM_MODE_MS);
-       Gpio.pwmSetClock(500);
-       Gpio.pwmSetRange(1000);
+       Gpio.pwmSetClock(192);
+       Gpio.pwmSetRange(2000);
        pwm.setPwm(500);
    }
 
