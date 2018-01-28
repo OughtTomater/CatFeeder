@@ -18,7 +18,7 @@ public class Pwm {
 
     public void screwItJustUsePython(){
         PythonInterpreter interpreter = new PythonInterpreter();
-        interpreter.exec("import sys\nfrom piServo import turnServo\nturnServo()");
+        interpreter.exec("import sys\nsys.path.append(\"/home/pi/\")\nfrom piServo import turnServo\nturnServo()");
     }
 
    public void turnServo(){
