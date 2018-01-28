@@ -43,7 +43,7 @@ public class FeederController {
 
     @RequestMapping("/servo")
     public String servo(){
-        servo.turnServo();
+        servo.screwItJustUsePython();
         return "turning servo";
     }
 

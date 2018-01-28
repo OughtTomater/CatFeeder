@@ -3,6 +3,10 @@ package net.teamhuffowicz.catfeeder.pinhandlers.digital;
 import com.pi4j.io.gpio.*;
 import com.pi4j.util.CommandArgumentParser;
 import com.pi4j.wiringpi.Gpio;
+import org.python.util.PythonInterpreter;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Pwm {
 
@@ -11,6 +15,13 @@ public class Pwm {
    Pin pin = CommandArgumentParser.getPin(RaspiPin.class, RaspiPin.GPIO_01);
 
     GpioPinPwmOutput pwm = gpio.provisionPwmOutputPin(pin);
+
+    Path python = Paths.get("/src/main/resources/python/servo.py");
+
+    public void screwItJustUsePython(){
+        PythonInterpreter interpreter = new PythonInterpreter();
+        interpreter.exec("import sys\nsys.path.append("+ python +")\nimport yourModule");
+    }
 
    public void turnServo(){
        Gpio.pinMode(18,Gpio.PWM_OUTPUT);
