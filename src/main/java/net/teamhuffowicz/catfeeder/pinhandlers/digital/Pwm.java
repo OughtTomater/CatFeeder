@@ -20,4 +20,8 @@ public class Pwm {
        Gpio.pwmWrite(18, 75);
    }
 
+   public void stopServo(){
+       Gpio.pwmWrite(18 , 0);
+   }
+
 }
