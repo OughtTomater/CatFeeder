@@ -16,11 +16,9 @@ public class Pwm {
 
     GpioPinPwmOutput pwm = gpio.provisionPwmOutputPin(pin);
 
-    Path python = Paths.get("/src/main/resources/python/servo.py");
-
     public void screwItJustUsePython(){
         PythonInterpreter interpreter = new PythonInterpreter();
-        interpreter.exec("import sys\nsys.path.append("+ python +")\nimport yourModule");
+        interpreter.exec("import sys\nfrom piServo import turnServo\nturnServo()");
     }
 
    public void turnServo(){
