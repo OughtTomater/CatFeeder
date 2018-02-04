@@ -47,6 +47,12 @@ public class FeederController {
         return "turning servo";
     }
 
+    @RequestMapping("/stopservo")
+    public String stopServo(){
+        servo.stopServo();
+        return "stopping servo";
+    }
+
     public GpioPinDigitalOutput getPin(int pinNumber) {
         if (pin == null) {
             GpioController gpioController = GpioFactory.getInstance();

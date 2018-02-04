@@ -22,15 +22,15 @@ public class Pwm {
     }
 
    public void turnServo(){
-       Gpio.pinMode(18,Gpio.PWM_OUTPUT);
+       Gpio.pinMode(1,Gpio.PWM_OUTPUT);
        Gpio.pwmSetMode(Gpio.PWM_MODE_MS);
        Gpio.pwmSetClock(192);
        Gpio.pwmSetRange(2000);
-       Gpio.pwmWrite(18, 200);
+       Gpio.pwmWrite(1, 200);
    }
 
    public void stopServo(){
-       Gpio.pwmWrite(18 , 0);
+       Gpio.pwmWrite(1 , 0);
    }
 
 }
