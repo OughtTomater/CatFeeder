@@ -54,6 +54,12 @@ public class FeederController {
         return "turning servo 2";
     }
 
+    @RequestMapping("/servo2backwards")
+    public String servo2Backwards(){
+        servo.turnServobackwards(26);
+        return "turning servo 2 backwards";
+    }
+
     @RequestMapping("/stopservo/{pin}")
     public String stopServo(@PathVariable("pin") int pin){
         servo.stopServo(pin);
