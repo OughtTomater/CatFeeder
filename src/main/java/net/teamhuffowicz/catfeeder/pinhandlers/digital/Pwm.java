@@ -26,7 +26,7 @@ public class Pwm {
        Gpio.pwmSetMode(Gpio.PWM_MODE_MS);
        Gpio.pwmSetClock(192);
        Gpio.pwmSetRange(2000);
-       Gpio.pwmWrite(18, 75);
+       Gpio.pwmWrite(18, 200);
    }
 
    public void stopServo(){
