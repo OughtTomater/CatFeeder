@@ -21,16 +21,16 @@ public class Pwm {
         interpreter.exec("import sys\nsys.path.append(\"/home/pi/\")\nfrom piServo import turnServo\nturnServo()");
     }
 
-   public void turnServo(){
-       Gpio.pinMode(1,Gpio.PWM_OUTPUT);
+   public void turnServo(int servoPin){
+       Gpio.pinMode(servoPin,Gpio.PWM_OUTPUT);
        Gpio.pwmSetMode(Gpio.PWM_MODE_MS);
        Gpio.pwmSetClock(192);
        Gpio.pwmSetRange(2000);
-       Gpio.pwmWrite(1, 200);
+       Gpio.pwmWrite(servoPin, 200);
    }
 
-   public void stopServo(){
-       Gpio.pwmWrite(1 , 0);
+   public void stopServo(int servoPin){
+       Gpio.pwmWrite(servoPin , 0);
    }
 
 }

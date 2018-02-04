@@ -2,6 +2,7 @@ package net.teamhuffowicz.catfeeder.controller;
 
 import com.pi4j.io.gpio.*;
 import net.teamhuffowicz.catfeeder.pinhandlers.digital.Pwm;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,15 +42,21 @@ public class FeederController {
         return "Blink...blink...blink";
     }
 
-    @RequestMapping("/servo")
-    public String servo(){
-        servo.turnServo();
-        return "turning servo";
+    @RequestMapping("/servo1")
+    public String servo1(){
+        servo.turnServo(1);
+        return "turning servo 1";
     }
 
-    @RequestMapping("/stopservo")
-    public String stopServo(){
-        servo.stopServo();
+    @RequestMapping("/servo2")
+    public String servo2(){
+        servo.turnServo(26);
+        return "turning servo 2";
+    }
+
+    @RequestMapping("/stopservo/{pin}")
+    public String stopServo(@PathVariable("pin") int pin){
+        servo.stopServo(pin);
         return "stopping servo";
     }
 
